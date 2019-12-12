@@ -5,19 +5,17 @@
     let request = await fetch('https://jsonplaceholder.typicode.com/todos');
     let lines = await request.json();
     console.log(lines);
-
     let content = "";
     lines.map((post) => {
     // post.id is unique
-    content += `<input type='checkbox' name="${post.id}" id="${post.id}">
+    content += `<input type='checkbox' name="todo-${post.id}" id="todo-${post.id}" />
                 <span id="new_${post.id}">${post.title}
                 </span>
-            </input><br>`
+            <br>`
     })
     document.getElementById("sample").innerHTML = content;
-
     lines.map((post) => {
-    fetch(`https://jsonplaceholder.typicode.com/todos/${post.id}`, {
+    fetch(`https://jsonplaceholder.typicode.com/todos/todo-${post.id}`, {
     method: 'PUT',
     body: JSON.stringify({
         title: 'Sample',
@@ -29,7 +27,7 @@
     })
     .then(request => {
     // If we select a checkbox it strikes through
-        document.getElementById(`${post.id}`).checked = true;
+        document.getElementById(`todo-${post.id}`).checked = true;
         document.getElementById(`new_${post.id}`).setAttribute("style" , "text-decoration: line-through;");
     })
     })

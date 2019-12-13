@@ -6,6 +6,14 @@
         <title>Async Webpage</title>
     </head>
     <body>
+        <div id="todos">
+            <form name="todo-forms" method="POST">
+                UserID: <input type="number" name="userId"><br><br>
+                Title: <input type="text" name="title"><br><br>
+                Id: <input type="number" name="id"><br><br>
+                <button type="button" value="submit" onclick="todo_form(this.form)">Submit</button><br>
+            </form>
+        </div>
         <div id="sample"></div>
     </body>
     <script src="async.js"></script>

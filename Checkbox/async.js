@@ -3,7 +3,9 @@
 // "https://jsonplaceholder.typicode.com/"
 (async function(){
     let request = await fetch('https://jsonplaceholder.typicode.com/todos');
+    // fetching all the lines in json format
     let lines = await request.json();
+    // lines array is created
     console.log(lines);
     let content = "";
     lines.map((post) => {
@@ -14,9 +16,12 @@
                 </input>
             <br>`
     });
+    // transferring all the lines to div tag in HTML
     document.getElementById("sample").innerHTML = content;
     lines.map((post) => {
+        // adding a event listener click
         document.getElementById(`${post.id}`).addEventListener("click" , () => {
+            // If we select a checkbox it strikes through
             if(document.getElementById(`${post.id}`).checked){
                 fetch(`https://jsonplaceholder.typicode.com/todos/${post.id}`, {
                 method: 'PUT',
@@ -28,7 +33,6 @@
                 }
                 })
                 .then(request => {
-                // If we select a checkbox it strikes through
                     document.getElementById(`new_${post.id}`).setAttribute("style" , "text-decoration: line-through;");
                 })
             }
@@ -44,7 +48,7 @@
                     }
                 })
                 .then(request => {
-                    /*remove strikeout from the post*/
+                    // If we unselect a checkbox it becomes normal
                     document.getElementById(`new_${post.id}`).setAttribute("style" , "text-decoration: none;");
                 })
             }

@@ -16,9 +16,9 @@
     // for(i=0;i<details.length;i++){
     //   list += `<div>${details.name}<br>${details.email}<br>${details.body}</div>`;
     // }
-    let list = details.reduce((initial , comment) => {
-      return initial + `<div><h2>${comment.name}<br></h2>${comment.email}<br>
-            <div>${comment.body}</div></div>`;
+    let list = details.reduce((initial , posts) => {
+      return initial + `<div><h2>${posts.name}<br></h2>${posts.email}<br>
+            <div>${posts.body}</div></div>`;
     });
     // list += '</div>';
     document.getElementById("sample").innerHTML = list;

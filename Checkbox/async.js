@@ -64,18 +64,55 @@ function todo_form(form){
     if(form.title.value.length > 0 ){
         var temp = document.getElementById("sample");
         temp.innerHTML +=`<input type='checkbox' name="${form.id.value}" id="${form.id.value}" ><span id="new_${form.id.value}">${form.title.value}</span></input><br>`
-        fetch(`https://jsonplaceholder.typicode.com/todos/${form.id.value}`, {
+        fetch(`https://jsonplaceholder.typicode.com/todos`, {
             method: 'POST',
             body: JSON.stringify({
                 userId: form.userId.value,
                 title: form.title.value,
                 id: form.id.value,
-                completed: false
+                completed: true
             }),
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
             }
         })
+        .then(response => {
+            console.log("fooo");
+            document.getElementById(form.id.value).addEventListener("click" , () => {
+                // If we select a checkbox it strikes through
+                if(document.getElementById(`${form.id.value}`).checked){
+                    fetch(`https://jsonplaceholder.typicode.com/todos/${form.id.value}`, {
+                    method: 'PUT',
+                    body: JSON.stringify({
+                        completed: true
+                    }),
+                    headers: {
+                        "Content-type": "application/json; charset=UTF-8"
+                    }
+                    })
+                    .then(request => {
+                        document.getElementById(`new_${form.id.value}`).setAttribute("style" , "text-decoration: line-through;");
+                    })
+                }
+                else
+                {
+                    fetch(`https://jsonplaceholder.typicode.com/todos/${form.id.value}`, {
+                    method: 'PUT',
+                    body: JSON.stringify({
+                        completed: false
+                        }),
+                    headers: {
+                        "Content-type": "application/json; charset=UTF-8"
+                        }
+                    })
+                    .then(request => {
+                        // If we unselect a checkbox it becomes normal
+                        document.getElementById(`new_${form.id.value}`).setAttribute("style" , "text-decoration: none;");
+                    })
+                }
+            });
+        }
+        )
     }
     else{
         console.log("wrong details");

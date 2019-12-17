@@ -11,11 +11,11 @@
     lines.map((post,index) => {
     // post.id is unique
     if(index<=10){
-    content += `<input type='checkbox' name="${post.id}" id="${post.id}" >
+    content += `<label for="${post.id}"><input type='checkbox' name="${post.id}" id="${post.id}" >
                 <span id="new_${post.id}">${post.title}
                 </span>
                 </input>
-            <br>`
+            </label><br>`
     }
     });
     // transferring all the lines to div tag in HTML

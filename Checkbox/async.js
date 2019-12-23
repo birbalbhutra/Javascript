@@ -1,8 +1,10 @@
 // Start of IIFE
 // For Reference "https://javascript.info/async-await"
 // "https://jsonplaceholder.typicode.com/"
+// http://localhost:3000
 (async function(){
-    let request = await fetch('https://jsonplaceholder.typicode.com/todos');
+    // let request = await fetch('https://jsonplaceholder.typicode.com/todos');
+    let request = await fetch('http://localhost:3000');
     // fetching all the lines in json format
     let lines = await request.json();
     // lines array is created
@@ -26,7 +28,8 @@
         document.getElementById(post.id).addEventListener("click" , () => {
             // If we select a checkbox it strikes through
             if(document.getElementById(`${post.id}`).checked){
-                fetch(`https://jsonplaceholder.typicode.com/todos/${post.id}`, {
+                // fetch(`https://jsonplaceholder.typicode.com/todos/${post.id}`, {
+                fetch(`http://localhost:3000`, {
                 method: 'PUT',
                 body: JSON.stringify({
                     completed: true
@@ -41,7 +44,8 @@
             }
             else
             {
-                fetch(`https://jsonplaceholder.typicode.com/todos/${post.id}`, {
+                // fetch(`https://jsonplaceholder.typicode.com/todos/${post.id}`, {
+                fetch(`http://localhost:3000`, {
                 method: 'PUT',
                 body: JSON.stringify({
                     completed: false
@@ -63,7 +67,8 @@ function todo_form(form){
     if(form.title.value.length > 0 ){
         var temp = document.getElementById("sample");
         temp.innerHTML +=`<input type='checkbox' name="${form.id.value}" id="${form.id.value}" ><span id="new_${form.id.value}">${form.title.value}</span></input><br>`
-        fetch(`https://jsonplaceholder.typicode.com/todos/${form.id.value}`, {
+        // fetch(`https://jsonplaceholder.typicode.com/todos/${form.id.value}`, {
+            fetch(`http://localhost:3000`, {
             method: 'POST',
             body: JSON.stringify({
                 userId: form.userId.value,

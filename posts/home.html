@@ -14,12 +14,12 @@
     </head>
     <body>  
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Navigation</a>
+            <a class="navbar-brand" href="#">Typicode Home Page</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
           
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                   <a class="nav-link" href="home.html">Home <span class="sr-only">(current)</span></a>
@@ -40,14 +40,24 @@
                   </div>
                 </li>
               </ul>
-            </div>
+            </div> -->
           </nav> 
-          <div class="container">
+          <!-- <form name="login-form" id="login-form" class="form-inline">
+            <input type="text" name="userId" class="form-input form-control mr-sm-2" placeholder="User ID" aria-label="UserID">
+            <input type="password" name="password" class="form-input form-control mr-sm-2" placeholder="Password" aria-label="Password">
+            <button class="btn btn-outline-info my-2 my-sm-0" id="add-todo" type="submit">Login</button>  
+          </form> -->
+          <form name="loginForm" id="loginForm" class="form-inline col-3">
+          <div><input name="userId" class="form-input form-control mr-sm-2 my-2" placeholder="User ID" aria-label="UserID"></div>
+            <div><input type="password" name="password" class="form-input form-control mr-sm-2 my-2" placeholder="Password" aria-label="Password"></div>
+            <div><button class="my-2" id="add-todo" type="submit">Login</button></div>
+          </form>
+          <!-- <div class="container">
                 <h1><u>Welcome</u></h1>
                 <h2>Click the following links to navigate<br>
                     <a href="../Checkbox/index.html">Todos</a><br>
                     <a href="index.html">Posts</a></h2>
-          </div>
+          </div> -->
     </body>
-    <script src="script1.js"></script>
+    <script src="login.js"></script>
 </html>
